@@ -78,7 +78,6 @@ npm install
 npm run dev
 ```
 
-> Environment variables (Supabase, AI provider, WhatsApp, email keys) are not included in this repository. You need to supply your own.
 
 ## Pricing Model (Product Design)
 
