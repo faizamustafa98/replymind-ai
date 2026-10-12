@@ -1,0 +1,141 @@
+ReplyMind Frequently Asked Questions
+
+General
+
+Q: What is ReplyMind?
+A: ReplyMind is an AI-assisted unified inbox for small businesses. It brings a business's WhatsApp, Email, and Website customer messages into a single dashboard. For every incoming message, ReplyMind's AI drafts a suggested reply from the business's own uploaded documents. The business owner then decides whether to send the draft as-is, edit it, or write their own reply.
+
+Q: Is ReplyMind a chatbot?
+A: Not in the usual sense. A typical chatbot replies to customers automatically with no human involved. ReplyMind is a unified inbox where the AI only drafts a suggested reply - the business owner reviews it and makes the final decision. By default, nothing is sent to a customer without the owner's approval.
+
+Q: Who is ReplyMind for?
+A: Small businesses - roughly one to fifteen people - such as restaurants, clothing boutiques, freelancers, and small clinics. It suits owners who are active on messaging apps every day, losing customers to slow replies, and who cannot afford complex enterprise tools like Zendesk or Intercom.
+
+Q: What problem does ReplyMind solve?
+A: Small businesses answer the same questions every day across WhatsApp, email, and website forms, usually manually and hours late. ReplyMind consolidates all channels into one inbox and drafts fast, accurate replies so the owner can respond in seconds instead of hours.
+
+Q: How is ReplyMind different from Zendesk or Intercom?
+A: Zendesk and Intercom solve the unified-inbox problem but are priced for enterprises (around $74-$150+ per agent per month) and are complex to set up. ReplyMind offers a multi-channel unified inbox with AI drafting at an SME-friendly price, with setup taking about ten minutes.
+
+Q: How is ReplyMind different from a tool like Chatbase?
+A: Pure chatbot tools like Chatbase are cheap and fast to set up, but usually single-channel and fully autonomous - the AI replies directly with no human review. ReplyMind is multi-channel and keeps a human in the loop: the AI drafts, and the owner approves before anything is sent.
+
+How It Works
+
+Q: How does ReplyMind work, step by step?
+A: A customer sends a message on WhatsApp, email, or the website widget. The message reaches ReplyMind through a webhook. A question-classification layer checks whether it is genuinely a question. If it is, the AI searches the business's uploaded documents for relevant context and generates a draft reply. That draft appears in the owner's inbox as a card with Send, Edit, and Ignore options. When the owner taps Send, the reply goes back to the customer on the original channel.
+
+Q: Does the AI send replies automatically?
+A: No, not by default. Every AI draft requires the owner's approval before it is sent. There is an optional auto-reply feature the owner can turn on for very high-confidence messages, but it is disabled by default and fully controlled by the owner.
+
+Q: Where do the AI's answers come from?
+A: All answers are generated only from the documents the business uploads - FAQs, menus, price lists, and policy documents. ReplyMind does not invent answers from outside the business's own content.
+
+Q: What happens if the AI isn't confident about an answer?
+A: If the AI cannot find sufficiently relevant information, it does not attempt an answer. Instead it shows a fallback message such as "I do not have enough information to answer this," and the owner can reply manually.
+
+Q: Can the AI handle follow-up questions?
+A: Yes. ReplyMind uses recent conversation history to rewrite a follow-up into a standalone question, so the retrieved answer stays accurate.
+
+Q: What happens to messages that aren't questions?
+A: Messages that are not questions (for example, a simple "thanks") are routed to a separate Rejected panel where the owner can scan them, discard them, or reply manually.
+
+Channels and Integrations
+
+Q: Which channels does ReplyMind support?
+A: WhatsApp, Email, and a Website chat widget, all appearing together in one unified inbox.
+
+Q: Does ReplyMind support Instagram?
+A: Not yet. Instagram DM integration is planned for the future and architected at the database level, but not live in the current version. It was deferred because the Instagram Graph API requires a multi-day Meta app-review process.
+
+Q: How does the WhatsApp integration work?
+A: ReplyMind connects to WhatsApp through the Meta Cloud API (direct, self-serve, no third-party BSP required). Inbound messages arrive via a verified webhook, and approved replies are sent back through the business's own WhatsApp number.
+
+Q: How does the email integration work?
+A: Inbound emails arrive through SendGrid Inbound Parse, and approved replies are sent out via SendGrid SMTP.
+
+Q: How do I add the website chat widget to my site?
+A: You copy a single HTML script tag from your settings page and paste it into your website.
+
+Q: Can I customize the website widget?
+A: Yes, you can change the widget's title and primary color from the settings dashboard.
+
+AI Drafts, Accuracy, and Trust
+
+Q: Can I trust the AI's replies?
+A: Every AI output passes through you before it reaches the customer, so a wrong or awkward draft never reaches the customer unreviewed.
+
+Q: Can I edit an AI draft before sending?
+A: Yes, the draft is a fully editable text field in the message detail view.
+
+Q: Can the AI change the tone of a reply?
+A: Yes, you set a communication tone (professional, casual, or friendly) and a language for your business, and every AI draft is generated in that tone.
+
+Q: What AI model does ReplyMind use?
+A: OpenAI's GPT-4o-mini for draft generation and question handling, and text-embedding-3-small for semantic search over your documents.
+
+Documents and Knowledge Base
+
+Q: What file types can I upload?
+A: PDF, DOCX, and TXT files, such as FAQs, menus, catalogues, and policy documents.
+
+Q: Can I upload more than one document?
+A: Yes, multiple documents are all indexed together into a single knowledge base. The number allowed depends on your plan.
+
+Q: How do I know when my document is ready?
+A: A status badge shows Processing, then Ready or Failed.
+
+Q: Can I delete or update a document?
+A: Yes, you can delete a document (its embeddings are purged) or replace it with a new version.
+
+Auto-Reply
+
+Q: What is auto-reply?
+A: An optional feature that lets ReplyMind send a reply automatically, without your approval, when the AI's confidence is very high.
+
+Q: Is auto-reply on by default?
+A: No, auto-reply is disabled by default.
+
+Q: How does auto-reply decide when to send automatically?
+A: Only messages whose AI confidence score exceeds a configurable threshold (default 0.92) are sent automatically.
+
+Pricing and Billing
+
+Q: How much does ReplyMind cost?
+A: Free at $0/month, Pro at $19/month, Business at $49/month.
+
+Q: What's included in the Free plan?
+A: 50 conversations per month, the Website channel only, and 1 uploaded document.
+
+Q: What's included in the Pro plan?
+A: Unlimited conversations, all three channels (WhatsApp + Email + Website), up to 10 uploaded documents, opt-in auto-reply, and customer history.
+
+Q: What's included in the Business plan?
+A: Everything in Pro, plus Instagram integration (planned/future), full analytics, and multi-staff access.
+
+Q: How do I pay, and can I cancel anytime?
+A: Billing is handled through Stripe. You can view your plan and usage, upgrade, downgrade, or cancel at any time. There is no long-term lock-in.
+
+Setup and Onboarding
+
+Q: How long does setup take?
+A: About ten minutes, via a guided onboarding wizard.
+
+Q: What are the onboarding steps?
+A: Business profile, document upload, channel connection, and auto-reply preference, in that order. Document upload is required.
+
+Security, Privacy, and Data
+
+Q: Is my business's data kept separate from other businesses?
+A: Yes. Each business is a separate tenant. Every document and message is stamped with a tenant_id, and Row Level Security policies at the database level guarantee that one business's data can never be seen by another.
+
+Q: Can I export or delete my data?
+A: Yes, you can export all stored conversation and customer-contact data, or permanently delete your business's data.
+
+Accounts and Team Access
+
+Q: Can more than one person use the same account?
+A: Multi-staff access is a Business-plan feature.
+
+Q: I forgot my password. What do I do?
+A: You can request a password-reset link sent to your registered email; the reset token expires after 30 minutes.

@@ -1,0 +1,263 @@
+@import "tailwindcss" source(none);
+@source "..";
+@source "../components";
+@source "../hooks";
+@source "../lib";
+
+/* ── Design Tokens (new navy/blue palette) ── */
+@theme {
+  --color-ink: #232323;
+  --color-ink-soft: #2f2f2f;
+  --color-primary: #1e2294;
+  --color-primary-light: #e4e5f6;
+  --color-violet: #4a52c9;
+  --color-cyan: #8b90de;
+  --color-teal: #1e2294;
+  --color-amber: #4a52c9;
+  --color-coral: #83837d;
+  --color-surface: #f0efe3;
+  --color-border: #ddd9c4;
+  --color-white: #ffffff;
+  --color-bg: #f0efe3;
+  --color-text-primary: #232323;
+  --color-text-secondary: #6b6b64;
+  --color-text-muted: #83837d;
+  --color-text-on-dark: #f4f3ea;
+  --color-text-on-dark-muted: #b7b7c2;
+  --color-surface-glass: rgba(255, 255, 255, 0.6);
+  --color-border-glass: rgba(255, 255, 255, 0.5);
+
+  /* Backward-compat aliases for dashboard/auth pages */
+  --color-bg-base: #f0efe3;
+  --color-on-surface: #232323;
+  --color-on-surface-variant: #6b6b64;
+  --color-surface-container-low: #f0efe3;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-high: #f0efe3;
+  --color-surface-container-highest: #f0efe3;
+  --color-on-primary: #ffffff;
+  --color-secondary: #4a52c9;
+  --color-on-secondary-container: #1e2294;
+  --color-secondary-container: #e4e5f6;
+  --color-outline-variant: #ddd9c4;
+  --color-error: #dc2626;
+  --color-on-error: #ffffff;
+  --color-error-container: #fef2f2;
+  --color-surface-container: #eae8d9;
+  --color-surface-bright: #faf9f1;
+  --color-surface-variant: #e6e3d2;
+  --color-on-primary-container: #1e2294;
+  --color-primary-container: #e4e5f6;
+  --color-primary-fixed: #e4e5f6;
+  --color-primary-fixed-dim: #c5c6ed;
+  --color-accent: #1e2294;
+  --color-accent-hover: #151877;
+  --color-accent-on: #ffffff;
+  --color-tertiary-container: #e4e5f6;
+  --color-on-tertiary-container: #1e2294;
+  --color-tertiary: #4a52c9;
+  --color-on-tertiary: #ffffff;
+  --color-channel-whatsapp: #25D366;
+  --color-channel-email: #378ADD;
+  --color-channel-website: #A78BFA;
+
+  /* Gradient utilities (bg-gradient-brand / bg-gradient-mesh-bg).
+     In Tailwind v4 these must be --background-image-* theme vars, not :root
+     vars, or the utility classes generate no background. */
+  --background-image-gradient-brand: linear-gradient(120deg, #1e2294 0%, #4a52c9 100%);
+  --background-image-gradient-mesh-bg: radial-gradient(at 20% 20%, rgba(30, 34, 148, 0.12) 0, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(139, 144, 222, 0.22) 0, transparent 55%),
+    radial-gradient(at 50% 100%, rgba(74, 82, 201, 0.14) 0, transparent 50%);
+
+  --font-display: "General Sans", "sans-serif";
+  --font-mono: "JetBrains Mono", "monospace";
+
+  /* Named spacing scale used across the dashboard (p-md, gap-lg, px-gutter…).
+     Without these the dashboard renders with no padding/margins in v4. */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-base: 1rem;
+  --spacing-md: 1.25rem;
+  --spacing-gutter: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+
+  /* Named type sizes used across the dashboard (text-label-md, text-body-sm…). */
+  --text-label-sm: 0.75rem;
+  --text-label-md: 0.8125rem;
+  --text-body-sm: 0.875rem;
+  --text-body-md: 0.9375rem;
+
+  --animate-rm-floatA: rm-floatA 4s ease-in-out infinite;
+  --animate-rm-floatB: rm-floatB 4.6s ease-in-out 0.5s infinite;
+  --animate-rm-floatC: rm-floatC 4.2s ease-in-out 0.9s infinite;
+  --animate-rm-slidein: rm-slidein 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-rm-pulse: rm-pulse 2s infinite;
+  --animate-rm-dot: rm-dot 1s infinite;
+}
+
+:root {
+  --gradient-brand: linear-gradient(120deg, #1e2294 0%, #4a52c9 100%);
+  --gradient-mesh-bg: radial-gradient(at 20% 20%, rgba(30, 34, 148, 0.12) 0, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(139, 144, 222, 0.22) 0, transparent 55%),
+    radial-gradient(at 50% 100%, rgba(74, 82, 201, 0.14) 0, transparent 50%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--color-text-primary);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ── Material Symbols ── */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  line-height: 1;
+}
+
+.msym-fill {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+/* ── Dashboard / Auth utility classes ── */
+.glass-card {
+  background: radial-gradient(circle at 0% 0%, rgba(30, 34, 148, 0.06), transparent 50%),
+    rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--color-border);
+  border-radius: 2rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 300ms ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(30, 34, 148, 0.10);
+}
+
+.sidebar-glass {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.frosted-glass {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.nav-item {
+  position: relative;
+  transition: all 0.3s;
+}
+
+.nav-item-active {
+  background: rgba(30, 34, 148, 0.08);
+  color: var(--color-primary);
+  border-left-color: var(--color-primary);
+}
+
+.nav-item-hover:hover {
+  background: rgba(30, 34, 148, 0.05);
+  color: var(--color-primary);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* ── Keyframes ── */
+@keyframes rm-floatA {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes rm-floatB {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes rm-floatC {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes rm-slidein {
+  from { opacity: 0; transform: translateY(-14px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes rm-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(30, 34, 148, 0.35); }
+  50% { box-shadow: 0 0 0 8px rgba(30, 34, 148, 0); }
+}
+
+@keyframes rm-dot {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
+/* PageLoader's water-fill wordmark: the diagonal shimmer stripe drifts
+   sideways continuously, independent of the rise (which is driven by
+   clip-path, not background-position, so the two never fight over the
+   same CSS property). */
+@keyframes water-flow-x {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 0 0, -44px 0; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes barGrow {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+/* Hero headline sizing. From lg up (≥1024px) the journey graphic shows and the
+   whole block is JS-scaled, so the base 58px is used. Below lg the graphic is
+   hidden and the headline flows on its own — it grows to fill the freed space:
+   large on tablet, stepping down on phones. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  [data-jhead] {
+    font-size: 60px !important;
+  }
+}
+@media (min-width: 480px) and (max-width: 767px) {
+  [data-jhead] {
+    font-size: 48px !important;
+  }
+}
+@media (max-width: 479px) {
+  [data-jhead] {
+    font-size: 36px !important;
+  }
+}

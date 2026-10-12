@@ -1,0 +1,36 @@
+ReplyMind Pricing and Plans
+
+ReplyMind uses a simple, SME-first three-tier pricing model, billed monthly through Stripe.
+
+Pricing Summary
+- Free: $0/month - trying ReplyMind on a single website channel.
+- Pro: $19/month - solo owners and small teams who want all channels and unlimited conversations.
+- Business: $49/month - growing teams that need Instagram (future), full analytics, and multi-staff access.
+
+Free Plan - $0/month
+Includes: 50 conversations per month, Website channel only (no WhatsApp or Email), 1 uploaded document in the knowledge base. This is a genuine starting point, not a trial that expires.
+
+Pro Plan - $19/month
+Includes: unlimited conversations, all three channels (WhatsApp + Email + Website), up to 10 uploaded documents, auto-reply (opt-in, disabled by default), and customer history. Pro is aimed at the solo restaurant owner, boutique, freelancer, or small clinic handling customer messages across multiple channels every day.
+
+Business Plan - $49/month
+Includes everything in Pro, plus Instagram integration (planned/future), full analytics, and multi-staff access (multiple team members on one account). The database reserves fields for multi-staff access from the start.
+
+Plan Comparison
+- Monthly price: Free $0, Pro $19, Business $49.
+- Conversations per month: Free 50, Pro unlimited, Business unlimited.
+- Website channel: included on all three plans.
+- WhatsApp channel: not on Free; included on Pro and Business.
+- Email channel: not on Free; included on Pro and Business.
+- Instagram channel: not available yet on any plan; planned for Business.
+- Documents in knowledge base: Free 1, Pro 10, Business 10+.
+- Auto-reply (opt-in): not on Free; available on Pro and Business.
+- Customer history: not on Free; available on Pro and Business.
+- Full analytics: not on Free, basic on Pro, full on Business.
+- Multi-staff access: only on Business.
+
+Billing and Usage
+Billing is handled through Stripe. The owner can view their current plan and monthly usage, and upgrade or cancel at any time through the billing settings (Stripe Customer Portal). Hard usage caps are enforced at the API layer: every AI operation (classification, retrieval embedding, draft generation, refinement) is metered against the business's monthly counter. The owner can move between plans at any time; upgrading unlocks additional channels, more documents, and higher limits immediately. Cancellation can happen at any time via Stripe.
+
+Pricing Rationale
+Enterprise tools like Zendesk charge around $150 per agent per month for this class of value. ReplyMind offers the same fundamental value - a multi-channel unified inbox with AI drafting - at a fraction of the price. Enterprise unified-inbox tools (Zendesk, Intercom, Freshdesk) run roughly $74-$150+ per agent per month and are complex to set up. Pure chatbot tools run roughly $19-$50 per month but are single-channel and fully autonomous, with no human review. ReplyMind sits deliberately in the gap: SME-friendly pricing, multi-channel, and human-in-the-loop AI drafting.

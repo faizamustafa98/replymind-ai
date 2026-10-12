@@ -1,0 +1,69 @@
+ReplyMind Product Overview
+
+What ReplyMind Is
+ReplyMind is an AI-assisted unified inbox for small businesses. It brings a business's WhatsApp, Email, and Website customer messages together into a single dashboard. For every incoming customer message, ReplyMind's AI drafts a suggested reply based on the business's own uploaded documents (FAQs, menus, price lists, policies).
+
+The most important principle in ReplyMind is that the AI draft is never sent automatically by default. The business owner always makes the final decision with one tap: send the draft as-is, edit it first and then send, or ignore it and write a reply from scratch. The AI assists the owner; it does not replace them.
+
+ReplyMind is designed for solo operators and small teams (roughly one to fifteen people) who are non-technical but active on messaging apps every day, and who cannot afford or do not want enterprise tools like Zendesk or Intercom.
+
+The Problem ReplyMind Solves
+Every small business answers the same handful of questions every day: "What are your hours?", "Do you deliver?", "What's your return policy?", "How much does this cost?" These questions arrive through WhatsApp, Email, and website contact forms, and the owner or a staff member answers them manually, often hours after the customer first wrote in. A customer who does not get a fast response often moves on to a competitor. A human-handled customer interaction costs roughly $6.00, while an AI-assisted response can cost under $0.50. About 75% of customers prefer a chatbot or AI-assisted response for simple tasks like FAQs and order tracking rather than waiting on a human reply.
+
+Enterprise solutions such as Zendesk, Intercom, and Freshdesk already solve the unified-inbox problem, but their pricing (around $74-$150+ per agent per month) and setup complexity make them practically inaccessible to small businesses. Simple chatbot tools are cheap and fast to set up, but they reply to customers autonomously with no human review, which creates a serious trust risk.
+
+Why ReplyMind Exists
+ReplyMind's core distinction: in a pure-chatbot model, the AI is the final decision-maker. In ReplyMind's model, the human is the final decision-maker - the AI provides speed and drafting assistance only. Every AI output passes through a human before it reaches the customer, which solves the trust problem at the architecture level.
+
+Why ReplyMind Is Defensible
+- Engineering moat: multi-channel ingestion (WhatsApp Business API, email parsing, website widget) each carry their own authentication flows, rate limits, webhook quirks, and failure modes.
+- Retention moat: a unified inbox that gets opened many times a day becomes a daily habit, which makes it hard to cancel.
+- Trust moat: every AI output passes through a human before reaching the customer, defusing the risk of hallucination reaching the end user.
+
+Target Users
+- Primary user - the Business Owner: runs a business of one to fifteen people, is non-technical but active on WhatsApp and Instagram daily, cannot afford Zendesk or Intercom, and thinks of the product as an "inbox," not a "chatbot."
+- Secondary user - the Customer: their experience barely changes. They use WhatsApp, email, or website chat exactly as before; they just notice replies arrive faster.
+- Tertiary user - future multi-staff access: a Business-tier feature, the database reserves fields for this from the start.
+
+How It Works - Core Workflow
+1. A customer sends a message on WhatsApp, Email, or the website widget.
+2. The message reaches ReplyMind's backend through a webhook.
+3. A Question Classification layer determines whether the message is genuinely a question, producing a confidence score.
+4. If it is a question, the AI searches the business's uploaded documents for relevant context (RAG) and generates a draft reply in the business's configured tone.
+5. That draft appears in the owner's unified inbox with Send, Edit, and Ignore actions.
+6. The owner decides in seconds: send the draft as-is, edit it and send, or write their own reply.
+7. The moment the owner taps Send, the reply goes back to the customer on the original channel.
+
+If confidence is very high, the AI can auto-send the reply without disturbing the owner, but this is an explicit, opt-in setting that is disabled by default. By default, every message requires owner approval.
+
+Core Screens
+- Unified Inbox: all channels in a single threaded view, grouped by customer, with real-time updates.
+- Message Card with AI Draft: shows the customer's question, the AI's suggested draft, and one-tap Send / Edit / Ignore actions.
+- Channel Settings: WhatsApp, Email, and Website connection status, embed code, and per-category auto-reply toggles.
+- Analytics Dashboard: before-versus-after response time comparison, AI draft acceptance rate, and channel-wise message volume.
+
+System Architecture
+ReplyMind's architecture has six decoupled layers: Channel Integration Layer (WhatsApp, Email, Website Widget, each behind a common adapter interface), Question Classification Layer, RAG Pipeline (pgvector cosine similarity retrieval + GPT-4o-mini generation), Unified Inbox Interface (real-time via Supabase Realtime), Auto-Reply Engine (opt-in, full audit trail), and Multi-Tenancy & Security Layer (Row Level Security on every table, enforced at the Postgres level).
+
+Technology Stack
+- Backend: Supabase (auth, database, real-time, RLS, REST APIs) + FastAPI (Python) for webhooks and the AI pipeline.
+- Frontend: Next.js + Tailwind CSS + shadcn/ui.
+- Database: Supabase (PostgreSQL + pgvector).
+- AI / RAG: OpenAI GPT-4o-mini + text-embedding-3-small.
+- WhatsApp: Meta Cloud API.
+- Email: SendGrid Inbound Parse + SMTP.
+- Website Widget: embeddable React + WebSocket.
+- Realtime updates: Supabase Realtime.
+- Payments: Stripe.
+- Hosting: Netlify + Supabase.
+
+Competitive Landscape
+- Zendesk / Intercom / Freshdesk: solve the unified inbox problem, but enterprise pricing and setup complexity overwhelm a small business.
+- Chatbase and pure chatbot tools: cheap and fast to set up, but single-channel and fully autonomous, carrying high trust risk.
+- WhatsApp Business App (native, free): widely used, but no AI assistance, no multi-channel consolidation, no analytics.
+ReplyMind combines SME-friendly pricing, a multi-channel unified inbox, and human-in-the-loop AI drafting - a combination no single competitor offers together.
+
+MVP Scope
+In scope (Must Have): Unified Inbox (WhatsApp + Email + Website in one dashboard); AI Draft Engine (RAG-based, isolated per tenant); one-tap Send / Edit / Ignore; live WhatsApp integration with a real pilot business.
+Should Have: Selective auto-reply for high-confidence question categories.
+Future / out of scope: Instagram DM integration - architected at the database level but not live yet, deferred because the Instagram Graph API requires Meta app review, an independent multi-day process.

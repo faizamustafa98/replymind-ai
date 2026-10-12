@@ -1,0 +1,20 @@
+# Ignore the Python virtual environment
+venv/
+.venv/
+env/
+
+# Ignore Python cache files
+**/__pycache__/
+*.pyc
+
+# Ignore environment variables
+.env
+
+# macOS Finder metadata
+.DS_Store
+
+# Local seed-run output (contains real row IDs from whichever DB you last seeded)
+scripts/seed_ids.txt
+
+.postman/
+postman/
